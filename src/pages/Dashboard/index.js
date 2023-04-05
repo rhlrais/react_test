@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import CustomButton from "../../component/button";
 
 const Dashboard = () => {
@@ -83,11 +81,20 @@ const Dashboard = () => {
                 style={{ paddingTop: index !== taskToEditIndex ? 0 : "24px" }}
               >
                 {index !== taskToEditIndex ? (
-                  <button onClick={() => editTask(index)}>Edit</button>
+                  <CustomButton
+                    onClick={() => editTask(index)}
+                    title={"Edit"}
+                  ></CustomButton>
                 ) : (
-                  <button onClick={() => updateTask(index)}>Update</button>
+                  <CustomButton
+                    onClick={() => updateTask(index)}
+                    title={"Update"}
+                  ></CustomButton>
                 )}
-                <button onClick={() => deleteTask(index)}>Delete</button>
+                <CustomButton
+                  onClick={() => deleteTask(index)}
+                  title={"Delete"}
+                ></CustomButton>
               </td>
             </tr>
           ))}
@@ -118,7 +125,6 @@ const Dashboard = () => {
       />
 
       <CustomButton onClick={addTask} title={"add new task"}></CustomButton>
-      {/* <button onClick={addTask}>add new task</button> */}
       {renderList()}
     </div>
   );
