@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
@@ -9,18 +8,6 @@ const Login = () => {
   const [isRegisterd, setRegisterd] = useState(true);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
-  // User Login info
-  // const database = [
-  //   {
-  //     username: "user1",
-  //     password: "12345678",
-  //   },
-  //   {
-  //     username: "user2",
-  //     password: "12345678",
-  //   },
-  // ];
 
   const errors = {
     uname: "invalid username",
@@ -59,10 +46,8 @@ const Login = () => {
         setRegisterd(false);
       }
     } else {
-      // Find user login info
       const users = JSON.parse(localStorage.getItem("users")) ?? [];
       const userData = users.find((user) => user.username === uname.value);
-      // Compare user info
       if (userData) {
         if (userData.password !== pass.value) {
           setErrorMessages({ name: "pass", message: errors.pass });
